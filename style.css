@@ -1,23 +1,97 @@
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
 }
 
-.game--container {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    width: 306px;
-    margin: 50px auto;
-    text-align: center;
+html, body {
+  width: 100vw;
+  height: 100vh;
 }
-.cell {
-    width: 100px;
-    height: 100px;
-    box-shadow: 0 0 0 1px #333333;
-    outline: 1px solid #333333;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
+
+main {
+  height: 100%;
+  width: 100%;
 }
+
+main #turn {
+  font-weight: 900;
+  font-size: 35px;
+}
+
+main #board {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+main #board .slot {
+  content: '';
+  height: 18vh;
+  width: 18vh;
+  border: 0.5px solid black;
+  cursor: pointer;
+  font-size: 14vh;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 900;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#finish-screen {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+#finish-screen p {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 100px;
+  font-size: 50px;
+}
+
+#finish-screen #restart {
+  font-size: 40px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 40px auto;
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#finish-screen #restart:hover {
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+}
+/*# sourceMappingURL=style.css.map */

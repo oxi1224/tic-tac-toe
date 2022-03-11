@@ -1,17 +1,83 @@
+const board = document.getElementById("board");
+const slots = [...board.querySelectorAll("div.slot")];
+const finishScreen = document.getElementById("finish-screen");
+const result = document.getElementById("result");
+const turnDisplay = document.getElementById("turn"); 
+const restartBtn = document.getElementById("restart");
+let player = 0;
+let gameState = {current: ["0","0","0","0","0","0","0","0","0"]};
 
-let board = document.getElementById('board');
-let cells = board.querySelectorAll('div.cell');
-
-for (let index = 0; index < cells.length; ++index){
-    const cell = cells[index];
-    cell.addEventListener("click", function() {
-        let turn = 1;
-        if (turn == 1) {
-            turn = 2;
-            cell.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+for (let i = 0; i < slots.length; i++){
+    const slot = slots[i];
+    slot.addEventListener("click", () => {
+        const slotId = slot.id;
+        if (player == 0){
+            if (isEmpty(slot.textContent)) {
+                slot.textContent = "X";
+                gameState.current[slotId] = slot.textContent;
+                player++;
+                turnDisplay.textContent = "Turn: Player 2";
+            } else {
+                return;
+            }
         } else {
-            cell.innerHTML = '<i class="fa-solid fa-o"></i>';
-            turn = 1;
+            if (isEmpty(slot.textContent)) {
+                slot.textContent = "O";
+                gameState.current[slotId] = slot.textContent;
+                player--;
+                turnDisplay.textContent = "Turn: Player 1";
+            } else {
+                return;
+            }
         }
-    })
+        hasWon(gameState.current);
+    });
+}
+restartBtn.addEventListener("click", restartGame)
+function hasWon(board) {
+    let win = new Array(new Array(0, 1, 2), // Check first row.
+    new Array(3, 4, 5), // Check second Row
+    new Array(6, 7, 8), // Check third Row
+    new Array(0, 3, 6), // Check first column
+    new Array(1, 4, 7), // Check second Column
+    new Array(2, 5, 8), // Check third Column
+    new Array(0, 4, 8), // Check first Diagonal
+    new Array(2, 4, 6)); // Check second Diagonal
+    
+    // Check all possible winning combinations
+    for (let i = 0; i < 8; i++) {
+        if (board[win[i][0]] == "X" && board[win[i][1]] == "X" && board[win[i][2]] == "X") {
+            isOver("Player 1");
+        } else if (board[win[i][0]] == "O" && board[win[i][1]] == "O" && board[win[i][2]] == "O") {
+            isOver("Player 2");
+        } else if (!(gameState.current.includes("0"))) {
+            isOver("Noone");            
+        }
+    }
+}
+function isOver(winner) {
+    finishScreen.style.visibility = "visible";
+    finishScreen.style.opacity = "1";
+    result.textContent = `${winner} has won!`;
+    turnDisplay.textContent = "Turn: Game Over";
+}
+function isEmpty(str) {
+    if (str === "") {
+        return true;
+    } else {
+        return false;
+    }
+}
+function restartGame() {
+    gameState.current = ["0","0","0","0","0","0","0","0","0"];
+    for (let i = 0; i < slots.length; i++) {
+        slots[i].textContent = '';
+        finishScreen.style.opacity = "0";
+        finishScreen.style.visibility = "hidden";
+        if(player == 0) {
+            turnDisplay.textContent = "Turn: Player 1";
+        } else {
+            turnDisplay.textContent = "Turn: Player 2";
+        }
+    }
 }
