@@ -7,6 +7,7 @@ const restartBtn = document.getElementById("restart");
 let player = 0;
 let gameState = {current: ["0","0","0","0","0","0","0","0","0"]};
 
+// makes the game run
 for (let i = 0; i < slots.length; i++){
     const slot = slots[i];
     slot.addEventListener("click", () => {
@@ -34,15 +35,16 @@ for (let i = 0; i < slots.length; i++){
     });
 }
 restartBtn.addEventListener("click", restartGame)
+// checks if someone had won
 function hasWon(board) {
-    let win = new Array(new Array(0, 1, 2), // Check first row.
-    new Array(3, 4, 5), // Check second Row
-    new Array(6, 7, 8), // Check third Row
-    new Array(0, 3, 6), // Check first column
-    new Array(1, 4, 7), // Check second Column
-    new Array(2, 5, 8), // Check third Column
-    new Array(0, 4, 8), // Check first Diagonal
-    new Array(2, 4, 6)); // Check second Diagonal
+    let win = [[0, 1, 2], // Check first row.
+               [3, 4, 5], // Check second Row
+               [6, 7, 8], // Check third Row
+               [0, 3, 6], // Check first column
+               [1, 4, 7], // Check second Column
+               [2, 5, 8], // Check third Column
+               [0, 4, 8], // Check first Diagonal
+               [2, 4, 6]]; // Check second Diagonal
     
     // Check all possible winning combinations
     for (let i = 0; i < 8; i++) {
@@ -50,17 +52,19 @@ function hasWon(board) {
             isOver("Player 1");
         } else if (board[win[i][0]] == "O" && board[win[i][1]] == "O" && board[win[i][2]] == "O") {
             isOver("Player 2");
-        } else if (!(gameState.current.includes("0"))) {
+        } else if (!(gameState.current.includes("0")) && board[win[i][0]] == "X" && board[win[i][1]] == "X" && board[win[i][2]] == "X" || board[win[i][0]] == "O" && board[win[i][1]] == "O" && board[win[i][2]] == "O") {
             isOver("Noone");            
         }
     }
 }
+// displays end screen and winner
 function isOver(winner) {
     finishScreen.style.visibility = "visible";
     finishScreen.style.opacity = "1";
     result.textContent = `${winner} has won!`;
     turnDisplay.textContent = "Turn: Game Over";
 }
+// checks if string is empty
 function isEmpty(str) {
     if (str === "") {
         return true;
@@ -68,6 +72,7 @@ function isEmpty(str) {
         return false;
     }
 }
+// restarts the game
 function restartGame() {
     gameState.current = ["0","0","0","0","0","0","0","0","0"];
     for (let i = 0; i < slots.length; i++) {
