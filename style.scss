@@ -7,35 +7,62 @@
 html, body{
     width: 100vw;
     height: 100vh;
+    background-color: #272727;
+    box-shadow: inset 0 0 100px 2.5px #000000;
 }
 main{
     height: 100%;
     width: 100%;
     #turn{
         font-weight: 900;
-        font-size: 35px;
+        font-size: 40px;
+        color: white;
+        text-shadow: #000 0px 0px 1px, #000 0px 1px 1px;
+        margin: 0 auto;
+        width: fit-content;
+        top: 2vh;
+        position: relative;
     }
     #board{
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        background-color: #272727;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+        gap: 5vh;
+        border-radius: 10px;    
         .slot{
             content: '';
             height: 18vh;
             width: 18vh;
-            border: 0.5px solid black;
             cursor: pointer;
             font-size: 14vh;
             text-align: center;
-            vertical-align: middle;
             font-weight: 900;
             user-select: none;
+            position: relative;
+            transition: transform 0.2s ease;
+            box-shadow: 9px 9px 22px 6px rgba($color: #000000, $alpha: .4), 
+                    -9px -9px 22px 2px rgba($color: #494949, $alpha: .4);
+            border-radius: 5px;
+            &:active{
+                transform: translatey(20px);
+                box-shadow: inset 0 0 10px 2px rgba($color: #000000, $alpha: .4),
+                            9px 9px 22px 6px rgba($color: #000000, $alpha: .4), 
+                            -9px -9px 22px 2px rgba($color: #494949, $alpha: .4);
+            }
+            span{
+                display: inline-block;
+                vertical-align: middle;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-family: 'Fredoka', sans-serif;
+            }
         }
     }
 }
@@ -50,23 +77,34 @@ main{
     left: 0;
     background-color: rgba($color: #000000, $alpha: .80);
     color: white;
-    p{
+    .finish-box{
+        padding: 2rem 8rem;
+        background-color: #272727;
         width: fit-content;
+        height: fit-content;
         margin: 0 auto;
         margin-top: 100px;
-        font-size: 50px;
-    }
-    #restart{
-        font-size: 40px;
-        width: fit-content;
-        margin: 40px auto;
-        cursor: pointer;
-        border: 1px solid white;
-        padding: 1rem 1.5rem;
         border-radius: 10px;
-        transition: all 0.5s ease;
-        &:hover{
-            filter: brightness(0.5);
+        box-shadow: 3px 3px 16px 1px rgba($color: #292929, $alpha: .4), 
+                    -3px -3px 16px 1px rgba($color: #494949, $alpha: .4);
+        p{
+            width: fit-content;
+            margin: 0 auto;
+            font-size: 50px;
+        }
+        #restart{
+            font-size: 40px;
+            width: fit-content;
+            margin: 40px auto;
+            cursor: pointer;
+            border: 1px solid white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+            background-color: rgba($color: #383838, $alpha: .6);
+            &:hover{
+                filter: brightness(0.8);
+            }
         }
     }
 }
