@@ -146,4 +146,50 @@ main #board .slot span {
   -webkit-filter: brightness(0.8);
           filter: brightness(0.8);
 }
+
+@media screen and (max-width: 640px) {
+  .finish-box {
+    padding: 1rem 2rem !important;
+  }
+  .finish-box p {
+    font-size: 25px !important;
+  }
+  .finish-box #restart {
+    font-size: 20px !important;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  #board .slot {
+    height: 16vh !important;
+    width: 16vh !important;
+    -webkit-box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, 0.4), -4px -4px 10px 3px rgba(73, 73, 73, 0.4) !important;
+            box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, 0.4), -4px -4px 10px 3px rgba(73, 73, 73, 0.4) !important;
+  }
+  #board .slot:active {
+    -webkit-transform: translatey(10px) !important;
+            transform: translatey(10px) !important;
+    -webkit-box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4), 4px 4px 10px 3px rgba(0, 0, 0, 0.4), 4px 4px 10px 3px rgba(73, 73, 73, 0.4) !important;
+            box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4), 4px 4px 10px 3px rgba(0, 0, 0, 0.4), 4px 4px 10px 3px rgba(73, 73, 73, 0.4) !important;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  #board {
+    gap: 2.5vh !important;
+  }
+  #board .slot {
+    height: 12vh !important;
+    width: 12vh !important;
+    font-size: 8vh !important;
+    -webkit-box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, 0.4), -4px -4px 10px 3px rgba(73, 73, 73, 0.4) !important;
+            box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, 0.4), -4px -4px 10px 3px rgba(73, 73, 73, 0.4) !important;
+  }
+  #board .slot:active {
+    -webkit-transform: translatey(10px) !important;
+            transform: translatey(10px) !important;
+    -webkit-box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4), 4px 4px 10px 3px rgba(0, 0, 0, 0.4), 4px 4px 10px 3px rgba(73, 73, 73, 0.4) !important;
+            box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4), 4px 4px 10px 3px rgba(0, 0, 0, 0.4), 4px 4px 10px 3px rgba(73, 73, 73, 0.4) !important;
+  }
+}
 /*# sourceMappingURL=style.css.map */

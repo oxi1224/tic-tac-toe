@@ -108,3 +108,48 @@ main{
         }
     }
 }
+@media screen and (max-width: 640px) {
+    .finish-box{
+        padding: 1rem 2rem !important;
+        p{
+            font-size: 25px !important;
+        }
+        #restart{
+            font-size: 20px !important;
+        }
+    }
+}
+@media screen and (max-width: 580px) {
+    #board{
+        .slot{
+            height: 16vh !important;
+            width: 16vh !important;
+            box-shadow: 4px 4px 10px 3px rgba($color: #000000, $alpha: .4), 
+                    -4px -4px 10px 3px rgba($color: #494949, $alpha: .4) !important;
+            &:active{
+                transform: translatey(10px) !important;
+                box-shadow: inset 0 0 5px 1px rgba($color: #000000, $alpha: .4),
+                            4px 4px 10px 3px rgba($color: #000000, $alpha: .4), 
+                            4px 4px 10px 3px rgba($color: #494949, $alpha: .4) !important;
+            }
+        }
+    }
+}
+@media screen and (max-width: 460px) {
+    #board{
+        gap: 2.5vh !important;
+        .slot{
+            height: 12vh !important;
+            width: 12vh !important;
+            font-size: 8vh !important;
+            box-shadow: 4px 4px 10px 3px rgba($color: #000000, $alpha: .4), 
+                    -4px -4px 10px 3px rgba($color: #494949, $alpha: .4) !important;
+            &:active{
+                transform: translatey(10px) !important;
+                box-shadow: inset 0 0 5px 1px rgba($color: #000000, $alpha: .4),
+                            4px 4px 10px 3px rgba($color: #000000, $alpha: .4), 
+                            4px 4px 10px 3px rgba($color: #494949, $alpha: .4) !important;
+            }
+        }
+    }
+}

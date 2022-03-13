@@ -59,7 +59,7 @@ function hasWon(board) {
         } else if (board[win[i][0]] == "O" && board[win[i][1]] == "O" && board[win[i][2]] == "O") {
             isOver("Player 2");
         } else if (!(gameState.current.includes("0")) && !(board[win[i][0]] == "X" && board[win[i][1]] == "X" && board[win[i][2]] == "X" || board[win[i][0]] == "O" && board[win[i][1]] == "O" && board[win[i][2]] == "O")) {
-            isOver("Noone");            
+            isOver("No one");            
         }
     }
 }
